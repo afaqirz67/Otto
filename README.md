@@ -1,7 +1,7 @@
 # Otto
 
 ## Code
-``C
+```C
 
 #include <Servo.h>
 
