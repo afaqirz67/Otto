@@ -1,15 +1,17 @@
-# Otto
-
-## Code
-```C
-
 #include <Servo.h>
 
 Servo rightLeg;
 Servo leftLeg;
 Servo rightFoot;
 Servo leftFoot;
+int echo = 8;
+int trig = 9;
+int num;
 
+
+/*
+ * hekvckefjvkfjevkjdfbvkhvkhkfrkjefhjbvekjhvkrjhvrkejhvbkejhvkejvkerjvkejvbfjknbv
+ */
 void setup() {
  rightFoot.attach(6);
  leftFoot.attach(5);
@@ -17,18 +19,65 @@ void setup() {
  leftLeg.attach(3);
  Serial.begin(9600);
  neutral();
-
+ pinMode(echo, INPUT);
+ pinMode(trig, OUTPUT);
+num = random(1,100);
 }
 
 void loop() { 
-//tipToes(); 
-upDown();
+  float distance = getDistance();
+
+
+if(distance < 10){
+  
+  num = random(1,6);
+  if( num ==1){
+    Serial.println("WALK");
+    walk();
+    walk();
+    walk();
+    
+  }
+  if(num== 2){
+    Serial.println("Tip Toes!!!!");
+    tipToes();
+    tipToes();
+    tipToes();
+  }
+  if(num == 3){
+    Serial.println("UpDown.");
+    upDown();
+    neutral();
+    delay(250);
+    upDown();
+    neutral();
+    delay(250);
+  }
+  if(num == 4){
+    Serial.println("LeapLeapLeap");
+    leap();
+    leap();
+    leap();
+  }
+  if(num == 5){
+    Serial.println("DANCE PARTAY!!!!");
+    dance();
+    dance();
+    dance();
+    dance();
+    dance();
+  }
+  
+  
+
+}
+else{
+  randomSeed(millis());
+}
 neutral();
 delay(250);
-tipToes();
-tipToes();
-tipToes();
-delay(250); }
+
+}
 
 void tipToes(){
 rightFoot.write(60);
@@ -57,6 +106,18 @@ void dance(){
   rightLeg.write(80);
   rightFoot.write(85);
   delay(250);
+}
+
+float getDistance(){
+  digitalWrite(trig, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trig, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trig, LOW);
+
+  float duration = pulseIn(echo, HIGH);
+  float distance = duration * 0.034 / 2;
+  return distance;
 }
 
 /*
@@ -131,5 +192,3 @@ for(int i = 20; i <= 85; i++){
   delay(25);
   }
 }
-
-``
