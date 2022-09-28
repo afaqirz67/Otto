@@ -26,9 +26,9 @@ num = random(1,100);
 
 void loop() { 
   float distance = getDistance();
+Serial.println(distance);
 
-
-if(distance < 10){
+if(distance < 50){
   
   num = random(1,6);
   if( num ==1){
@@ -164,15 +164,15 @@ void leap(){
 //stick out heels 
   rightLeg.write(150);
   rightFoot.write(60);
-  delay(250);
+  delay(500);
   //leftLeg.write(30);
   // leftFoot.write(120);
   //delay(250);
 
   rightFoot.write(120);
-  delay(250);
+  delay(500);
   rightLeg.write(70);
-  delay(250);
+  delay(500);
 
 }
 
