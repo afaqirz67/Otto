@@ -1,3 +1,5 @@
+```C
+
 #include <Servo.h>
 
 Servo rightLeg;
@@ -192,3 +194,4 @@ for(int i = 20; i <= 85; i++){
   delay(25);
   }
 }
+```
