@@ -11,9 +11,7 @@ int trig = 9;
 int num;
 
 
-/*
- * hekvckefjvkfjevkjdfbvkhvkhkfrkjefhjbvekjhvkrjhvrkejhvbkejhvkejvkerjvkejvbfjknbv
- */
+
 void setup() {
  rightFoot.attach(6);
  leftFoot.attach(5);
